@@ -13,49 +13,38 @@ export const CounterContext = createContext();
 // }
 
 export default function CounterContextProvider({ children }) {
-  const [counter, setCounter] = useState(0)
-  const [Cart, setCart] = useState(0)
   const [cartDetails, setCartDetails] = useState(null);
-  const [numOfCartItems, setnumOfCartItems] = useState(0)
   const [isLoading, setIsLoading] = useState({
     getCart: false,
     deleteProduct: false,
     updateCart: false,
     Chickout: false,
     clearCart: false,
-
   });
-  const [msg, setmsg] = useState({
-    getCart: null,
-    deleteProduct: null,
-    updateCart: null,
-    Chickout: null,
-    clearCart: null,
 
-  });
   const [numCartItems, setNumCartItems] = useState(0);
 
   useEffect(() => {
-    getCart()
-  }, [])
+    getCart();
+  }, []);
   async function AddProudect(proudect) {
     try {
-      const { data } = await axios.post("https://ecommerce.routemisr.com/api/v1/cart",
+      const { data } = await axios.post(
+        "https://ecommerce.routemisr.com/api/v1/cart",
         {
-          productId: proudect
+          productId: proudect,
         },
         {
           headers: {
-            token: localStorage.getItem("userToken")
-          }
+            token: localStorage.getItem("userToken"),
+          },
         }
-      )
+      );
       console.log(data);
       toast.success("Add to Cart");
-      getCart(data.data)
+      getCart(data.data);
     } catch (error) {
       console.log(error);
-
     } finally {
       setIsLoading(false);
     }
@@ -63,16 +52,19 @@ export default function CounterContextProvider({ children }) {
   async function getCart() {
     setIsLoading(true);
     try {
-      const { data } = await axios.get("https://ecommerce.routemisr.com/api/v1/cart", {
-        headers: {
-          token: localStorage.getItem("userToken"),
-        },
-      });
+      const { data } = await axios.get(
+        "https://ecommerce.routemisr.com/api/v1/cart",
+        {
+          headers: {
+            token: localStorage.getItem("userToken"),
+          },
+        }
+      );
 
       console.log("Cart Data Response:", data);
 
       setCartDetails(data);
-      setnumOfCartItems(data.numOfCartItems)
+
       toast.success("Success");
     } catch (error) {
       console.error(error);
@@ -84,11 +76,14 @@ export default function CounterContextProvider({ children }) {
   async function deleteProduct(id) {
     setIsLoading(true);
     try {
-      const { data } = await axios.delete(`https://ecommerce.routemisr.com/api/v1/cart/${id}`, {
-        headers: {
-          token: localStorage.getItem("userToken"),
-        },
-      });
+      const { data } = await axios.delete(
+        `https://ecommerce.routemisr.com/api/v1/cart/${id}`,
+        {
+          headers: {
+            token: localStorage.getItem("userToken"),
+          },
+        }
+      );
       console.log(data);
       setCartDetails(data);
       toast.error("Deleted");
@@ -127,16 +122,17 @@ export default function CounterContextProvider({ children }) {
   }
   async function Chickout(id, shippingAddress) {
     try {
-      const { data } = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=${location.origin}`,
+      const { data } = await axios.post(
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=${location.origin}`,
         {
-          shippingAddress: shippingAddress
+          shippingAddress: shippingAddress,
         },
         {
           headers: {
             token: localStorage.getItem("userToken"),
           },
         }
-      )
+      );
       console.log(data);
       if (data?.session?.url) {
         window.location.href = data.session.url;
@@ -144,7 +140,10 @@ export default function CounterContextProvider({ children }) {
         toast.error("Failed to create checkout session.");
       }
     } catch (error) {
-      console.error("Error during checkout:", error.response?.data || error.message);
+      console.error(
+        "Error during checkout:",
+        error.response?.data || error.message
+      );
       toast.error("An error occurred during checkout. Please try again later.");
     }
   }
@@ -152,7 +151,7 @@ export default function CounterContextProvider({ children }) {
   async function clearCart() {
     setIsLoading(true);
     try {
-      const { data } = await axios.delete("https://ecommerce.routemisr.com/api/v1/cart", {
+      await axios.delete("https://ecommerce.routemisr.com/api/v1/cart", {
         headers: {
           token: localStorage.getItem("userToken"),
         },
@@ -161,7 +160,7 @@ export default function CounterContextProvider({ children }) {
       setCartDetails(null);
       toast.success("Cart cleared successfully");
     } catch (error) {
-
+      console.error("Error clearing cart:", error);
       toast.error("Failed to clear cart");
     } finally {
       setIsLoading(false);

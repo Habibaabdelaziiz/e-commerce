@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../Conttext/UserContext";
+import { UserContext } from "../../Conttext/UserContext.jsx";
 export default function Register() {
   const [Counter, setCounter] = useState(0);
   const [errMsg, seterrMsg] = useState(undefined);

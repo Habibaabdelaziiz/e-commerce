@@ -10,7 +10,7 @@ import Home from "./Components/Home/Home";
 import NotFound from "./Components/NotFound/NotFound";
 import ProtectedRoute from "./Components/ProtectRoute/ProtectedRoute";
 import "flowbite/dist/flowbite.js";
-import UserContextProvider from "./Conttext/UserContext";
+import UserContextProvider from "./Conttext/UserContext.jsx";
 import ProductDetails from "./Components/productDetails/productDetails";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -22,7 +22,7 @@ import WishList from "./Components/WishList/WishList";
 import ShippingAddress from "./Components/ShippingAddress/ShippingAddress";
 
 import NewPasswored from "./Components/NewPasswored/NewPasswored";
-import CounterContextProvider from "./Conttext/counterContext";
+import CounterContextProvider from "./Conttext/CounterContext.jsx";
 
 function App() {
   const router = createBrowserRouter(
