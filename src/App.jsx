@@ -25,98 +25,93 @@ import NewPasswored from "./Components/NewPasswored/NewPasswored";
 import CounterContextProvider from "./Conttext/CounterContext.jsx";
 
 function App() {
-  const router = createBrowserRouter(
-    [
-      {
-        path: "",
-        element: <LayOut />,
-        children: [
-          { index: true, element: <Register /> },
-          { index: true, path: "Login", element: <Login /> },
-          { path: "ForgetPasswored", element: <ForgetPasswored /> },
-          { path: "RePasswored", element: <RePasswored /> },
-          { path: "NewPasswored", element: <NewPasswored /> },
-          {
-            path: "Home",
-            element: (
-              <ProtectedRoute>
-                {" "}
-                <Home />{" "}
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "ShippingAddress",
-            element: (
-              <ProtectedRoute>
-                {" "}
-                <ShippingAddress />{" "}
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "productDetails/:id",
-            element: (
-              <ProtectedRoute>
-                {" "}
-                <ProductDetails />{" "}
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "Proudects",
-            element: (
-              <ProtectedRoute>
-                {" "}
-                <Proudects />{" "}
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "WishList",
-            element: (
-              <ProtectedRoute>
-                {" "}
-                <WishList />{" "}
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "Category",
-            element: (
-              <ProtectedRoute>
-                {" "}
-                <Category />{" "}
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "Cart",
-            element: (
-              <ProtectedRoute>
-                {" "}
-                <Cart />{" "}
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "Brands",
-            element: (
-              <ProtectedRoute>
-                {" "}
-                <Brands />{" "}
-              </ProtectedRoute>
-            ),
-          },
-          { path: "Register", element: <Register /> },
-          { path: "*", element: <NotFound /> },
-        ],
-      },
-    ],
+  const router = createBrowserRouter([
     {
-      basename: "/ViteTest2",
-    }
-  );
+      path: "",
+      element: <LayOut />,
+      children: [
+        { index: true, element: <Register /> },
+        { index: true, path: "Login", element: <Login /> },
+        { path: "ForgetPasswored", element: <ForgetPasswored /> },
+        { path: "RePasswored", element: <RePasswored /> },
+        { path: "NewPasswored", element: <NewPasswored /> },
+        {
+          path: "Home",
+          element: (
+            <ProtectedRoute>
+              {" "}
+              <Home />{" "}
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "ShippingAddress",
+          element: (
+            <ProtectedRoute>
+              {" "}
+              <ShippingAddress />{" "}
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "productDetails/:id",
+          element: (
+            <ProtectedRoute>
+              {" "}
+              <ProductDetails />{" "}
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "Proudects",
+          element: (
+            <ProtectedRoute>
+              {" "}
+              <Proudects />{" "}
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "WishList",
+          element: (
+            <ProtectedRoute>
+              {" "}
+              <WishList />{" "}
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "Category",
+          element: (
+            <ProtectedRoute>
+              {" "}
+              <Category />{" "}
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "Cart",
+          element: (
+            <ProtectedRoute>
+              {" "}
+              <Cart />{" "}
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "Brands",
+          element: (
+            <ProtectedRoute>
+              {" "}
+              <Brands />{" "}
+            </ProtectedRoute>
+          ),
+        },
+        { path: "Register", element: <Register /> },
+        { path: "*", element: <NotFound /> },
+      ],
+    },
+  ]);
 
   const myClient = new QueryClient();
 
