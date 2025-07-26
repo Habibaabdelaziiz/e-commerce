@@ -1,0 +1,61 @@
+/* NotFound.module.css */
+
+/* Main container for the page */
+.notFoundPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #2abd16, #17c23498);  /* Gradient background */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Wrapping content */
+  .contentWrapper {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  /* Heading styling */
+  .heading {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  /* Paragraph description */
+  .description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  /* Counter styling */
+  .counterText {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 30px;
+  }
+  
+  /* Home button */
+  .homeButton {
+    background-color: #35b923;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .homeButton:hover {
+    background-color: #0ea534;
+  }
+  

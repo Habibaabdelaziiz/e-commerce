@@ -1,0 +1,10 @@
+.btnT{
+    .sill{
+        transition: 2s;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        transform: translateY(60px);
+    }
+}
+.btnT:hover .sill{
+    transform: translateY(0px);
+}
